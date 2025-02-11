@@ -20,9 +20,13 @@ description: >- # this means to ignore newlines until "baseurl:"
 minimal_mistakes_skin: default
 search: true
 
+plugins:
+  - jekyll-feed
+  - jekyll-include-cache
+
 # Build settings
 markdown: kramdown
-theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
