@@ -73,10 +73,10 @@ From the above, we prove that the expectation of the cost function will be subje
 ## **DAgger**: Dataset Aggregation
 DAgger [[1]](#1) is an iterative algorithm that trying to solve the distributional shift problem. The algorithm works as the following:
 
-1.train $\pi_{\theta} (a_{t}|o_{t})$ from human data $D = \{o_1, a_1,...,o_N,a_N\}$  
-2.run $ \pi_{\theta} (a_{t}|o_{t}) $ \text{to get data} $ D_{\pi}=\{o_1,...,o_M\}$  
-3.human to label $D_{\pi}$ to get actions $a_t$  
-4.Aggregate: $D \leftarrow D \bigcup D_{\pi}$  
+1. train $\pi_{\theta} (a_{t} \mid o_{t})$ from human data $D = \{o_1, a_1,...,o_N,a_N\}$  
+2. run $ \pi_{\theta} (a_{t} \mid o_{t}) $ to get data $ D_{\pi}=\{o_1,...,o_M\}$  
+3. human to label $D_{\pi}$ to get actions $a_t$  
+4. Aggregate: $D \leftarrow D \bigcup D_{\pi}$  
 
 After many iterations, we can expect that we are trained under $p_{\pi_{\theta}}(o_t)$, that eventually $p_{data}(o_t)=p_{\pi_{\theta}}(o_t)$. Although theoretically this can help to mitigate the distributional shift issue, it can suffer from step 3 where human labeling is needed. It could be difficult to acquire vast amount of human-labeled data or the labeling task itself can be extremely difficult for human to perform (e.g. label humanoid actions with many degree-of-freedoms).
 
