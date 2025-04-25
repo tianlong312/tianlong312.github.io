@@ -67,7 +67,7 @@ The $\sqrt{d_k}$ was used in scaled dot-product to add stability for the attenti
 If we have two vectors of unit Gaussian distribution $\mathcal{N}(0, 1)$, the variance of the dot product will be scaled up by the head size. Therefore, by dividing $\sqrt{d_k}$, we can make sure the variance of the dot product will be 1.
 
 ### The mask
-Inside `self.register_buffer` function we defined out mask to be a lower-triangular matrix, this is because in the decoder portion of the model, a front token should not be aware of or attend to the future tokens after it. For instance, the second token can see itself and the first token, but not the third token and afterwards. Therefore, for the second row of the attention matrix, we should set '-inf' starting from the third element so that they will be equal to 0 when calculating the softmax.
+Inside `self.register_buffer` function we defined our mask to be a lower-triangular matrix, this is because in the decoder portion of the model, a front token should not be aware of or attend to the future tokens after it. For instance, the second token can see itself and the first token, but not the third token and afterwards. Therefore, for the second row of the attention matrix, we should set '-inf' starting from the third element so that they will be equal to 0 when calculating the softmax.
 
 `self.register_buffer` was used so that this mask is not considered as a model parameter which means torch will not keep calculating the gradient for it.
 
